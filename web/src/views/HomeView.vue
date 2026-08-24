@@ -229,35 +229,37 @@ onMounted(async () => {
       </div>
     </Transition>
 
-    <!-- 顶栏 -->
-    <header class="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <BookOpen class="w-6 h-6 text-amber-500" />
-        <h1 class="text-xl font-bold">墨染酒馆</h1>
+    <!-- 顶栏（移动端：次要操作仅图标，主操作保留文字） -->
+    <header class="border-b border-zinc-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+        <BookOpen class="w-6 h-6 text-amber-500 shrink-0" />
+        <h1 class="text-lg sm:text-xl font-bold truncate">墨染酒馆</h1>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
         <Button variant="ghost" size="icon" class="h-8 w-8" title="设置" @click="router.push('/settings')">
           <Settings class="w-4 h-4" />
         </Button>
         <Button
-          variant="outline"
-          class="border-zinc-700"
-          title="浏览云端公共剧本库，上传/下载/导入共享剧本"
+          variant="ghost"
+          size="icon"
+          class="h-8 w-8 sm:h-9"
+          title="公共剧本库"
           @click="router.push('/library')"
         >
-          <Globe class="w-4 h-4 mr-2" />
-          公共剧本库
+          <Globe class="w-4 h-4" />
+          <span class="hidden sm:inline sm:ml-1 sm:text-sm">公共剧本库</span>
         </Button>
         <Button
-          variant="outline"
-          class="border-zinc-700"
+          variant="ghost"
+          size="icon"
+          class="h-8 w-8 sm:h-9"
           :disabled="importing"
-          title="导入任意格式的剧本 JSON（春潮/风月/MISS/日礼/春水/酒馆等），AI 会自动分析提取，大文件解析可能需要 1-2 分钟"
+          title="导入剧本"
           @click="importInputRef?.click()"
         >
-          <Loader2 v-if="importing" class="w-4 h-4 mr-2 animate-spin" />
-          <Upload v-else class="w-4 h-4 mr-2" />
-          {{ importing ? 'AI 解析中，请稍候...' : '导入剧本' }}
+          <Loader2 v-if="importing" class="w-4 h-4 animate-spin" />
+          <Upload v-else class="w-4 h-4" />
+          <span class="hidden sm:inline sm:ml-1 sm:text-sm">{{ importing ? 'AI 解析中...' : '导入剧本' }}</span>
         </Button>
         <input ref="importInputRef" type="file" accept=".json" class="hidden" @change="handleImportScript" />
         <Button class="bg-amber-600 hover:bg-amber-500" @click="router.push('/editor?id=new')">
@@ -268,7 +270,7 @@ onMounted(async () => {
     </header>
 
     <!-- 剧本列表 -->
-    <main class="max-w-6xl mx-auto px-6 py-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
       <div v-if="loading" class="flex items-center justify-center h-64">
         <p class="text-zinc-500">加载中...</p>
       </div>
@@ -280,7 +282,7 @@ onMounted(async () => {
           创建第一个剧本
         </Button>
       </div>
-      <div v-else class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      <div v-else class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
         <div
           v-for="script in scripts"
           :key="script.id"

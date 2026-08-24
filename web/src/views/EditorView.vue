@@ -193,26 +193,26 @@ function handleCoverUpload(e: Event) {
     <p class="text-zinc-500">加载中...</p>
   </div>
   <div v-else class="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col">
-    <!-- 顶栏 -->
+    <!-- 顶栏（移动端：操作按钮仅图标，sm 起显示文字） -->
     <header class="border-b border-zinc-800 px-4 py-3 flex items-center justify-between shrink-0">
-      <div class="flex items-center gap-3">
-        <Button variant="ghost" size="icon" class="h-8 w-8" @click="router.push('/')">
+      <div class="flex items-center gap-3 min-w-0">
+        <Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" @click="router.push('/')">
           <ArrowLeft class="w-4 h-4" />
         </Button>
-        <h1 class="text-lg font-semibold">{{ isNew ? '新建剧本' : '编辑剧本' }}</h1>
+        <h1 class="text-base sm:text-lg font-semibold truncate">{{ isNew ? '新建剧本' : '编辑剧本' }}</h1>
       </div>
-      <div class="flex items-center gap-2">
-        <Button variant="outline" size="sm" class="border-zinc-700" :disabled="!scriptId" @click="handlePreview">
-          <Eye class="w-4 h-4 mr-1" />
-          预览
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
+        <Button variant="outline" size="icon" class="h-8 w-8 sm:h-9 sm:w-auto sm:px-3 border-zinc-700" :disabled="!scriptId" @click="handlePreview" title="预览">
+          <Eye class="w-4 h-4" />
+          <span class="hidden sm:inline sm:ml-1">预览</span>
         </Button>
-        <Button size="sm" class="bg-amber-600 hover:bg-amber-500" :disabled="saving" @click="handleSave">
-          <Save class="w-4 h-4 mr-1" />
-          {{ saving ? '保存中...' : '保存' }}
+        <Button size="icon" class="h-8 w-8 sm:h-9 sm:w-auto sm:px-3 bg-amber-600 hover:bg-amber-500" :disabled="saving" @click="handleSave" title="保存">
+          <Save class="w-4 h-4" />
+          <span class="hidden sm:inline sm:ml-1">{{ saving ? '保存中...' : '保存' }}</span>
         </Button>
-        <Button v-if="!isNew" variant="ghost" size="sm" class="text-red-500 hover:text-red-400" @click="handleDelete">
-          <Trash2 class="w-4 h-4 mr-1" />
-          删除
+        <Button v-if="!isNew" variant="ghost" size="icon" class="h-8 w-8 sm:h-9 sm:w-auto sm:px-3 text-red-500 hover:text-red-400" @click="handleDelete" title="删除">
+          <Trash2 class="w-4 h-4" />
+          <span class="hidden sm:inline sm:ml-1">删除</span>
         </Button>
       </div>
     </header>
@@ -222,7 +222,7 @@ function handleCoverUpload(e: Event) {
       <!-- 左侧表单 -->
       <div class="w-full lg:w-1/2 lg:border-r border-zinc-800 flex flex-col overflow-hidden">
         <div class="flex-1 overflow-y-auto">
-          <div class="p-6 space-y-6">
+          <div class="p-4 sm:p-6 space-y-5 sm:space-y-6">
             <!-- 基本信息 -->
             <section class="space-y-4">
               <h2 class="text-sm font-semibold text-zinc-400 uppercase tracking-wider">基本信息</h2>

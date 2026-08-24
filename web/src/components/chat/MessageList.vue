@@ -70,7 +70,7 @@ watch(
 <template>
   <div v-for="msg in visibleMessages" :key="msg.id" class="w-full">
     <div
-      class="relative group w-full bg-zinc-900/[var(--bubble-bg-opacity)] backdrop-blur-md border border-zinc-800/50 shadow-sm rounded-2xl px-6 py-4"
+      class="relative group w-full bg-zinc-900/[var(--bubble-bg-opacity)] backdrop-blur-md border border-zinc-800/50 shadow-sm rounded-2xl px-4 py-3 sm:px-6 sm:py-4"
       :class="msg.role === 'user' ? 'rounded-tr-sm' : 'rounded-tl-sm'"
     >
       <!-- 身份标识 Header -->
@@ -143,7 +143,7 @@ watch(
 
   <!-- 流式输出中的 AI 回复（仅最新页） -->
   <div v-if="streaming && streamContent && isLatestPage" class="w-full">
-    <div class="w-full bg-zinc-900/[var(--bubble-bg-opacity)] backdrop-blur-md border border-zinc-800/50 shadow-sm rounded-2xl rounded-tl-sm px-6 py-4">
+    <div class="w-full bg-zinc-900/[var(--bubble-bg-opacity)] backdrop-blur-md border border-zinc-800/50 shadow-sm rounded-2xl rounded-tl-sm px-4 py-3 sm:px-6 sm:py-4">
       <div class="text-xs text-amber-500/80 mb-2 flex items-center gap-2">✨ {{ saveData.meta.name || 'AI' }}</div>
       <div class="prose prose-invert max-w-none prose-sm markdown-body stream-caret" :style="{ fontSize: 'var(--app-font-size)', lineHeight: '1.75', color: appearance.textColor }" v-html="md(streamContent)" />
     </div>
@@ -151,7 +151,7 @@ watch(
 
   <!-- "正在思考"占位符（仅最新页；推理模型在流式中也会进入思考状态） -->
   <div v-if="thinking && isLatestPage" class="w-full">
-    <div class="w-full bg-zinc-900/[var(--bubble-bg-opacity)] backdrop-blur-md border border-zinc-800/50 shadow-sm rounded-2xl rounded-tl-sm px-6 py-4">
+    <div class="w-full bg-zinc-900/[var(--bubble-bg-opacity)] backdrop-blur-md border border-zinc-800/50 shadow-sm rounded-2xl rounded-tl-sm px-4 py-3 sm:px-6 sm:py-4">
       <div class="text-xs text-amber-500/80 mb-2 flex items-center gap-2">✨ {{ saveData.meta.name || 'AI' }}</div>
       <div class="flex items-center" :style="{ fontSize: 'var(--app-font-size)', color: appearance.textColor }">
         <span class="thinking-dot w-1.5 h-1.5 rounded-full bg-amber-500/70" />

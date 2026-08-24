@@ -80,7 +80,7 @@ onMounted(async () => {
     </div>
   </div>
   <div v-else class="min-h-screen bg-zinc-950 text-zinc-100">
-    <header class="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
+    <header class="border-b border-zinc-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <Button variant="ghost" size="icon" class="h-8 w-8" @click="router.push('/')">
           <ArrowLeft class="w-4 h-4" />
@@ -96,7 +96,7 @@ onMounted(async () => {
       </Button>
     </header>
 
-    <main class="max-w-3xl mx-auto px-6 py-8">
+    <main class="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
       <div v-if="saves.length === 0" class="text-center py-16">
         <p class="text-zinc-500 mb-4">暂无存档</p>
         <Button variant="outline" class="border-zinc-700" @click="handleNewSave">

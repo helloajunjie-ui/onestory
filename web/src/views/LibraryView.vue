@@ -191,33 +191,39 @@ onMounted(async () => {
 
 <template>
   <div class="min-h-screen bg-zinc-950 text-zinc-100">
-    <!-- 顶栏 -->
-    <header class="border-b border-zinc-800 px-6 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3 min-w-0">
+    <!-- 顶栏（移动端：连接状态与上传文字隐藏，仅图标） -->
+    <header class="border-b border-zinc-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+      <div class="flex items-center gap-2 sm:gap-3 min-w-0">
         <Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" @click="router.push('/')">
           <ArrowLeft class="w-4 h-4" />
         </Button>
         <Globe class="w-5 h-5 text-amber-500 shrink-0" />
-        <h1 class="text-lg font-semibold truncate">公共剧本库</h1>
+        <h1 class="text-base sm:text-lg font-semibold truncate">公共剧本库</h1>
         <span
-          class="text-xs px-2 py-0.5 rounded-full shrink-0"
+          class="text-xs px-2 py-0.5 rounded-full shrink-0 hidden sm:inline-flex"
           :class="connected ? 'bg-emerald-500/10 text-emerald-400' : 'bg-zinc-800 text-zinc-500'"
         >
           {{ connected ? '已连接云端' : '未配置云端' }}
         </span>
       </div>
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1 sm:gap-2 shrink-0">
         <Button variant="ghost" size="icon" class="h-8 w-8" title="设置" @click="router.push('/settings')">
           <Settings class="w-4 h-4" />
         </Button>
-        <Button v-if="connected" class="bg-amber-600 hover:bg-amber-500" @click="openUpload">
-          <Upload class="w-4 h-4 mr-2" />
-          上传剧本
+        <Button
+          v-if="connected"
+          size="icon"
+          class="h-8 w-8 sm:h-9 sm:w-auto sm:px-4 bg-amber-600 hover:bg-amber-500"
+          title="上传剧本"
+          @click="openUpload"
+        >
+          <Upload class="w-4 h-4" />
+          <span class="hidden sm:inline sm:ml-1">上传剧本</span>
         </Button>
       </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-6 py-8">
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
       <!-- 未配置云端地址 -->
       <div v-if="!connected" class="flex flex-col items-center justify-center h-64 gap-4">
         <Globe class="w-16 h-16 text-zinc-700" />
@@ -257,7 +263,7 @@ onMounted(async () => {
           <p class="text-zinc-500">{{ search ? '没有匹配的剧本' : '公共剧本库还是空的' }}</p>
           <p class="text-zinc-600 text-sm">{{ search ? '换个关键词试试' : '点击右上角「上传剧本」分享你的作品' }}</p>
         </div>
-        <div v-else class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div v-else class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4">
           <div
             v-for="item in items"
             :key="item.id"

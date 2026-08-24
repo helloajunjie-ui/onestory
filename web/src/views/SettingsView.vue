@@ -162,14 +162,14 @@ async function handleImport(e: Event) {
 
 <template>
   <div class="min-h-screen bg-zinc-950 text-zinc-100">
-    <header class="border-b border-zinc-800 px-6 py-4 flex items-center gap-3">
+    <header class="border-b border-zinc-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3">
       <Button variant="ghost" size="icon" class="h-8 w-8" @click="router.back()">
         <ArrowLeft class="w-4 h-4" />
       </Button>
       <h1 class="text-lg font-semibold">设置</h1>
     </header>
 
-    <main class="max-w-xl mx-auto px-6 py-8 space-y-10">
+    <main class="max-w-xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8 sm:space-y-10">
       <!-- ===== AI 配置区块 ===== -->
       <section>
         <h2 class="text-base font-medium text-amber-500 mb-4">AI 配置</h2>

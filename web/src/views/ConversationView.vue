@@ -911,12 +911,12 @@ function buildPageItems(): (number | '...')[] {
         </div>
       </div>
 
-      <!-- 右侧世界书抽屉 -->
+      <!-- 右侧世界书抽屉（移动端全宽限 320px，桌面 288px） -->
       <div
         class="shrink-0 border-l border-zinc-800/60 bg-zinc-950/90 backdrop-blur-md transition-all duration-300 overflow-hidden"
-        :class="worldbookOpen ? 'w-72' : 'w-0'"
+        :class="worldbookOpen ? 'w-full max-w-[320px] sm:w-72' : 'w-0'"
       >
-        <div class="w-72 h-full flex flex-col">
+        <div class="w-full max-w-[320px] sm:w-72 h-full flex flex-col">
           <div class="flex items-center justify-between px-4 py-3 border-b border-zinc-800/60 shrink-0">
             <h2 class="text-sm font-semibold text-zinc-300 flex items-center gap-2">
               <BookOpen class="w-4 h-4 text-amber-500" />
