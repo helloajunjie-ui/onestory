@@ -37,7 +37,7 @@ MAIN_PID=$!
 
 if [ "$MAIN_ONLY" = "0" ]; then
   echo "▶ 构建本地公共库..."
-  cd ../cloud
+  cd ../../cloud   # 从 client/server → 根/cloud
   go build -o cloud-server.exe .
   echo "▶ 启动本地公共库（:8787）..."
   ./cloud-server.exe -port 8787 -data ./data &
