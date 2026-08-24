@@ -1,0 +1,40 @@
+# 墨染酒馆 (Ink Tavern)
+
+# ===== 依赖与构建产物 =====
+node_modules/
+**/node_modules/
+server/internal/webui/dist/
+dist/
+*.tsbuildinfo
+
+# ===== 运行时数据（含用户数据/API Key，严禁入库）=====
+server/data/
+server/data-e2e/
+cloud/data/
+data/
+*.db
+*.db-shm
+*.db-wal
+
+# ===== 本地可执行与备份包 =====
+*.exe
+*.exe~
+*.rar
+
+# ===== 测试产物 =====
+test-results/
+playwright-report/
+
+# ===== 参考资料（成熟工具源码，不随项目公开）=====
+zhuanhuangongju/
+
+# ===== 根目录剧本样本 / 临时脚本 =====
+/*.json
+/*.cjs
+resp.json
+
+# ===== 环境与系统 =====
+.env*
+.DS_Store
+Thumbs.db
+npm-debug.log*

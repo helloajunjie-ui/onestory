@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* 全局暗色基调（与旧 React 版一致） */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: #09090b; /* zinc-950 */
+}
+
+/* ==================== Markdown 渲染样式 ====================
+   对应旧版 MessageList.tsx 中 react-markdown components 覆写的视觉效果 */
+.markdown-body {
+  word-break: break-word;
+  /* 文字描边：半透明气泡 + 背景图时仍保持文字清晰 */
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.85),
+    0 0 4px rgba(0, 0, 0, 0.5);
+}
+.markdown-body a {
+  color: #fbbf24;
+  text-decoration: underline;
+}
+.markdown-body a:hover {
+  color: #fcd34d;
+}
+.markdown-body p {
+  margin-bottom: 0.5rem;
+}
+.markdown-body p:last-child {
+  margin-bottom: 0;
+}
+.markdown-body code {
+  background: #27272a;
+  color: #fbbf24;
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.markdown-body pre {
+  background: #27272a;
+  border-radius: 8px;
+  padding: 12px;
+  overflow-x: auto;
+  margin: 8px 0;
+}
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+.markdown-body ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+.markdown-body ul li {
+  margin-bottom: 4px;
+}
+.markdown-body ol {
+  list-style: decimal;
+  padding-left: 20px;
+  margin-bottom: 8px;
+}
+.markdown-body ol li {
+  margin-bottom: 4px;
+}
+.markdown-body h1 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fbbf24;
+}
+.markdown-body h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #fcd34d;
+}
+.markdown-body h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #e4e4e7;
+}
+.markdown-body blockquote {
+  border-left: 2px solid #d97706;
+  padding-left: 12px;
+  margin: 8px 0;
+  color: #a1a1aa;
+  font-style: italic;
+}
+.markdown-body hr {
+  border-color: #3f3f46;
+  margin: 12px 0;
+}
+.markdown-body table {
+  border-collapse: collapse;
+  margin: 8px 0;
+  width: 100%;
+}
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid #3f3f46;
+  padding: 6px 10px;
+}
+.markdown-body img {
+  max-width: 100%;
+  border-radius: 6px;
+}

@@ -1,0 +1,34 @@
+# 墨染酒馆容器化部署：两套系统
+#   ink-tavern     主服务（剧本/存档/对话/设置），端口 8080
+#   cloud          云端公共剧本库，端口 8787
+#
+# 用法：
+#   docker compose up -d --build        # 构建并启动
+#   docker compose ps                    # 查看状态
+#   docker compose logs -f ink-tavern    # 查看日志
+#   docker compose down                  # 停止（保留数据卷）
+
+services:
+  ink-tavern:
+    build:
+      context: .
+      dockerfile: Dockerfile.ink-tavern
+    container_name: ink-tavern
+    ports:
+      - "8080:8080"
+    volumes:
+      # 主服务数据（SQLite 库）挂载到宿主机 ./data/server
+      - ./data/server:/data
+    restart: unless-stopped
+
+  cloud:
+    build:
+      context: .
+      dockerfile: Dockerfile.cloud
+    container_name: ink-tavern-cloud
+    ports:
+      - "8787:8787"
+    volumes:
+      # 云端公共库数据（剧本库 JSON 文件）挂载到宿主机 ./data/cloud
+      - ./data/cloud:/data
+    restart: unless-stopped

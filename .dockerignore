@@ -1,0 +1,25 @@
+# 依赖与构建产物
+node_modules/
+**/node_modules/
+server/internal/webui/dist/
+
+# 本地数据 / 数据库（不进入镜像）
+server/data/
+server/data-e2e/
+cloud/data/
+data/
+
+# 本地可执行文件与备份
+*.exe
+*.rar
+
+# 测试与临时文件
+e2e/
+test-results/
+playwright-report/
+zhuanhuangongju/
+resp.json
+
+# 根目录的剧本样本 JSON / 临时脚本（不进入构建上下文）
+/*.json
+/*.cjs
