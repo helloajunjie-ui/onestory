@@ -110,29 +110,29 @@ watch(
           <span class="text-[10px] text-zinc-500">
             {{ new Date(msg.timestamp).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }) }}
           </span>
-          <!-- 复制 -->
-          <button @click="emit('copy', msg.content)" class="p-1 hover:bg-zinc-700/50 rounded text-zinc-600 hover:text-zinc-400 transition-colors" title="复制">
-            <Copy class="w-3 h-3" />
+          <!-- 复制（移动端加大点击区） -->
+          <button @click="emit('copy', msg.content)" class="p-2 sm:p-1 hover:bg-zinc-700/50 rounded text-zinc-600 hover:text-zinc-400 transition-colors" title="复制">
+            <Copy class="w-3.5 h-3.5 sm:w-3 sm:h-3" />
           </button>
           <template v-if="editingMsgId !== msg.id">
             <div class="flex items-center gap-0.5 ml-1">
-              <button @click="emit('startEdit', msg.id, msg.content)" class="p-1.5 hover:bg-zinc-700/50 rounded text-zinc-500 hover:text-amber-400 transition-colors" title="编辑本条消息">
-                <Pencil class="w-3.5 h-3.5" />
+              <button @click="emit('startEdit', msg.id, msg.content)" class="p-2 sm:p-1.5 hover:bg-zinc-700/50 rounded text-zinc-500 hover:text-amber-400 transition-colors" title="编辑本条消息">
+                <Pencil class="w-4 h-4 sm:w-3.5 sm:h-3.5" />
               </button>
               <button
                 v-if="msg.role === 'assistant'"
                 @click="onRegenerateClick"
-                class="p-1.5 hover:bg-zinc-700/50 rounded text-zinc-500 hover:text-amber-400 transition-colors"
+                class="p-2 sm:p-1.5 hover:bg-zinc-700/50 rounded text-zinc-500 hover:text-amber-400 transition-colors"
                 title="重新生成 AI 回复"
               >
-                <RotateCcw class="w-3.5 h-3.5" />
+                <RotateCcw class="w-4 h-4 sm:w-3.5 sm:h-3.5" />
               </button>
               <button
                 @click="onDeleteClick(msg.id)"
-                class="p-1.5 hover:bg-zinc-700/50 rounded text-zinc-500 hover:text-red-400 transition-colors"
+                class="p-2 sm:p-1.5 hover:bg-zinc-700/50 rounded text-zinc-500 hover:text-red-400 transition-colors"
                 title="删除（截断剧情）"
               >
-                <Trash2 class="w-3.5 h-3.5" />
+                <Trash2 class="w-4 h-4 sm:w-3.5 sm:h-3.5" />
               </button>
             </div>
           </template>

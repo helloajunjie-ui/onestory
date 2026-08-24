@@ -163,7 +163,7 @@ async function handleImport(e: Event) {
 <template>
   <div class="min-h-screen bg-zinc-950 text-zinc-100">
     <header class="border-b border-zinc-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center gap-3">
-      <Button variant="ghost" size="icon" class="h-8 w-8" @click="router.back()">
+      <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8" @click="router.back()">
         <ArrowLeft class="w-4 h-4" />
       </Button>
       <h1 class="text-lg font-semibold">设置</h1>

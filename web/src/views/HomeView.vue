@@ -236,13 +236,13 @@ onMounted(async () => {
         <h1 class="text-lg sm:text-xl font-bold truncate">墨染酒馆</h1>
       </div>
       <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-        <Button variant="ghost" size="icon" class="h-8 w-8" title="设置" @click="router.push('/settings')">
+        <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8" title="设置" @click="router.push('/settings')">
           <Settings class="w-4 h-4" />
         </Button>
         <Button
           variant="ghost"
           size="icon"
-          class="h-8 w-8 sm:h-9"
+          class="h-9 w-9 sm:h-9"
           title="公共剧本库"
           @click="router.push('/library')"
         >
@@ -252,7 +252,7 @@ onMounted(async () => {
         <Button
           variant="ghost"
           size="icon"
-          class="h-8 w-8 sm:h-9"
+          class="h-9 w-9 sm:h-9"
           :disabled="importing"
           title="导入剧本"
           @click="importInputRef?.click()"

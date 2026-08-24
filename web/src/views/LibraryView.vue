@@ -194,7 +194,7 @@ onMounted(async () => {
     <!-- 顶栏（移动端：连接状态与上传文字隐藏，仅图标） -->
     <header class="border-b border-zinc-800 px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
       <div class="flex items-center gap-2 sm:gap-3 min-w-0">
-        <Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" @click="router.push('/')">
+        <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8 shrink-0" @click="router.push('/')">
           <ArrowLeft class="w-4 h-4" />
         </Button>
         <Globe class="w-5 h-5 text-amber-500 shrink-0" />
@@ -207,13 +207,13 @@ onMounted(async () => {
         </span>
       </div>
       <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-        <Button variant="ghost" size="icon" class="h-8 w-8" title="设置" @click="router.push('/settings')">
+        <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8" title="设置" @click="router.push('/settings')">
           <Settings class="w-4 h-4" />
         </Button>
         <Button
           v-if="connected"
           size="icon"
-          class="h-8 w-8 sm:h-9 sm:w-auto sm:px-4 bg-amber-600 hover:bg-amber-500"
+          class="h-9 w-9 sm:h-9 sm:w-auto sm:px-4 bg-amber-600 hover:bg-amber-500"
           title="上传剧本"
           @click="openUpload"
         >
@@ -281,13 +281,13 @@ onMounted(async () => {
               </div>
               <!-- 操作按钮：常驻弱化，hover 增强 -->
               <div class="absolute top-2 right-2 flex gap-1 opacity-70 group-hover:opacity-100 transition-opacity">
-                <Button variant="ghost" size="icon" class="h-8 w-8 bg-zinc-900/80 backdrop-blur hover:bg-zinc-800 text-emerald-500 hover:text-emerald-400" title="导入本地" @click.stop="handleImport(item)">
+                <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8 bg-zinc-900/80 backdrop-blur hover:bg-zinc-800 text-emerald-500 hover:text-emerald-400" title="导入本地" @click.stop="handleImport(item)">
                   <Import class="w-4 h-4" />
                 </Button>
-                <Button variant="ghost" size="icon" class="h-8 w-8 bg-zinc-900/80 backdrop-blur hover:bg-zinc-800 text-sky-500 hover:text-sky-400" title="下载 .ink.json" @click.stop="handleDownload(item)">
+                <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8 bg-zinc-900/80 backdrop-blur hover:bg-zinc-800 text-sky-500 hover:text-sky-400" title="下载 .ink.json" @click.stop="handleDownload(item)">
                   <Download class="w-4 h-4" />
                 </Button>
-                <Button variant="ghost" size="icon" class="h-8 w-8 bg-zinc-900/80 backdrop-blur hover:bg-zinc-800 text-red-500 hover:text-red-400" title="删除" @click.stop="deleting = item">
+                <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8 bg-zinc-900/80 backdrop-blur hover:bg-zinc-800 text-red-500 hover:text-red-400" title="删除" @click.stop="deleting = item">
                   <Trash2 class="w-4 h-4" />
                 </Button>
               </div>

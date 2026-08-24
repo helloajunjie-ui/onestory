@@ -196,21 +196,21 @@ function handleCoverUpload(e: Event) {
     <!-- 顶栏（移动端：操作按钮仅图标，sm 起显示文字） -->
     <header class="border-b border-zinc-800 px-4 py-3 flex items-center justify-between shrink-0">
       <div class="flex items-center gap-3 min-w-0">
-        <Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" @click="router.push('/')">
+        <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8 shrink-0" @click="router.push('/')">
           <ArrowLeft class="w-4 h-4" />
         </Button>
         <h1 class="text-base sm:text-lg font-semibold truncate">{{ isNew ? '新建剧本' : '编辑剧本' }}</h1>
       </div>
       <div class="flex items-center gap-1 sm:gap-2 shrink-0">
-        <Button variant="outline" size="icon" class="h-8 w-8 sm:h-9 sm:w-auto sm:px-3 border-zinc-700" :disabled="!scriptId" @click="handlePreview" title="预览">
+        <Button variant="outline" size="icon" class="h-9 w-9 sm:h-9 sm:w-auto sm:px-3 border-zinc-700" :disabled="!scriptId" @click="handlePreview" title="预览">
           <Eye class="w-4 h-4" />
           <span class="hidden sm:inline sm:ml-1">预览</span>
         </Button>
-        <Button size="icon" class="h-8 w-8 sm:h-9 sm:w-auto sm:px-3 bg-amber-600 hover:bg-amber-500" :disabled="saving" @click="handleSave" title="保存">
+        <Button size="icon" class="h-9 w-9 sm:h-9 sm:w-auto sm:px-3 bg-amber-600 hover:bg-amber-500" :disabled="saving" @click="handleSave" title="保存">
           <Save class="w-4 h-4" />
           <span class="hidden sm:inline sm:ml-1">{{ saving ? '保存中...' : '保存' }}</span>
         </Button>
-        <Button v-if="!isNew" variant="ghost" size="icon" class="h-8 w-8 sm:h-9 sm:w-auto sm:px-3 text-red-500 hover:text-red-400" @click="handleDelete" title="删除">
+        <Button v-if="!isNew" variant="ghost" size="icon" class="h-9 w-9 sm:h-9 sm:w-auto sm:px-3 text-red-500 hover:text-red-400" @click="handleDelete" title="删除">
           <Trash2 class="w-4 h-4" />
           <span class="hidden sm:inline sm:ml-1">删除</span>
         </Button>

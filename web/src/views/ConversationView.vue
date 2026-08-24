@@ -603,7 +603,7 @@ function buildPageItems(): (number | '...')[] {
       :style="{ backgroundColor: 'rgba(9,9,11,' + config.appearance.headerOpacity / 100 + ')' }"
     >
       <div class="flex items-center gap-3 min-w-0">
-        <Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" @click="router.push(`/play?id=${scriptId}`)">
+        <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8 shrink-0" @click="router.push(`/play?id=${scriptId}`)">
           <ArrowLeft class="w-4 h-4" />
         </Button>
         <div class="min-w-0">
@@ -616,7 +616,7 @@ function buildPageItems(): (number | '...')[] {
         <div class="relative">
           <button
             @click="modelListOpen = !modelListOpen"
-            class="flex items-center gap-1 px-2 py-1 rounded text-xs text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors"
+            class="flex items-center gap-1 px-2.5 py-2 sm:py-1 rounded text-xs text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50 transition-colors"
             title="切换模型"
           >
             <Zap class="w-3 h-3 text-amber-500" />
@@ -641,10 +641,10 @@ function buildPageItems(): (number | '...')[] {
           </template>
         </div>
         <span class="text-xs text-zinc-600 hidden sm:inline">回合 {{ saveData.meta.turnCount }}</span>
-        <Button variant="ghost" size="icon" class="h-8 w-8" @click="worldbookOpen = !worldbookOpen" title="世界书">
+        <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8" @click="worldbookOpen = !worldbookOpen" title="世界书">
           <BookOpen class="w-4 h-4" />
         </Button>
-        <Button variant="ghost" size="icon" class="h-8 w-8" @click="router.push('/settings')" title="AI 设置">
+        <Button variant="ghost" size="icon" class="h-9 w-9 sm:h-8 sm:w-8" @click="router.push('/settings')" title="AI 设置">
           <Settings class="w-4 h-4" />
         </Button>
       </div>
