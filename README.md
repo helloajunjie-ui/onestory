@@ -19,7 +19,19 @@
 
 ## 🚀 快速开始
 
-### 方式一：Docker（推荐，两套系统一键起）
+### 方式零：本地独立部署（推荐日常使用，不依赖 Docker / 云端）
+
+```bash
+./start-local.sh              # 一键：构建并启动主服务 + 本地公共库
+./start-local.sh --main-only  # 仅启动主服务（不跑公共库）
+```
+
+- 墨染酒馆 → http://localhost:8080
+- 本地公共库 → http://localhost:8787（脚本已自动写入设置页云端地址，公共库本地可用）
+
+本地与云端完全独立：本地不依赖 Docker、不依赖云端修复进度。云端部署是另一套（见 DEPLOY.md），两者互不影响。
+
+### 方式一：Docker（云端/服务器部署，两套系统一键起）
 
 ```bash
 docker compose up -d --build
