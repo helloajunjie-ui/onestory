@@ -24,11 +24,11 @@
 ```bash
 docker compose up -d --build
 
-# 墨染酒馆    → http://localhost:8080
-# 云端公共库 → http://localhost:8787
+# 墨染酒馆    → http://localhost:23456
+# 云端公共库 → http://localhost:23457
 ```
 
-进入 **设置 → 公共剧本库**，云端地址填 `http://localhost:8787`，即可使用共享剧本库。数据持久化在 `./data/`，详见 [DEPLOY.md](DEPLOY.md)。
+进入 **设置 → 公共剧本库**，云端地址填 `http://localhost:23457`，即可使用共享剧本库。数据持久化在 `./data/`，详见 [DEPLOY.md](DEPLOY.md)。端口在 `docker-compose.yml` 里可改。
 
 ### 方式二：本地运行
 
