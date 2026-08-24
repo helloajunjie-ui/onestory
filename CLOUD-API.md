@@ -159,7 +159,7 @@ Headers: X-UID
 
 | 功能 | 文件 |
 |---|---|
-| 云库请求封装（X-UID / 绝对地址） | `web/src/api/index.ts` → `listLibraryScripts` / `getLibraryScript` / `uploadLibraryScript` / `deleteLibraryScript` |
+| 云库请求封装（X-UID / 绝对地址） | `client/web/src/api/index.ts` → `listLibraryScripts` / `getLibraryScript` / `uploadLibraryScript` / `deleteLibraryScript` |
 | UID 获取 | `GET /api/client/uid`（主服务生成） |
-| 云库页面 | `web/src/views/LibraryView.vue` |
+| 云库页面 | `client/web/src/views/LibraryView.vue` |
 | 云库后端实现 | `cloud/main.go`（4 个 handler 与本节一一对应） |

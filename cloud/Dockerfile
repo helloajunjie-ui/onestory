@@ -1,10 +1,11 @@
 # 墨染酒馆云端公共剧本库（纯 Go 标准库，JSON 文件存储）
 # 多阶段构建：golang 编译 → alpine 精简运行
+# 构建上下文：本目录（cloud/），`docker compose build cloud`
 
 # ---------- 阶段 1：编译 ----------
 FROM golang:1.26-alpine AS build
 WORKDIR /build
-COPY cloud/go.mod cloud/main.go ./
+COPY go.mod main.go ./
 RUN CGO_ENABLED=0 go build -trimpath -o /cloud-server .
 
 # ---------- 阶段 2：运行（精简 alpine） ----------

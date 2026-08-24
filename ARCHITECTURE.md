@@ -44,21 +44,25 @@
 ## 3. 目录结构
 
 ```
-server/                    Go 后端主服务
-  main.go                  入口（-port 默认 8080，-data 默认 ./data）
-  internal/store/          SQLite：schema.sql / models.go / store.go（全部 CRUD）
-  internal/ai/             AI 代理：OpenAI 兼容上游转发 + SSE 中继
-  internal/api/            REST 端点：scripts/saves/settings/assets/backup/ai/share/static
-  internal/webui/          go:embed 内嵌前端 dist + SPA fallback
-  data/                    SQLite 库 inktavern.db（运行时生成，不入库）
-web/                       Vue 3 前端
-  src/api/                 fetch 封装 + SSE 流式 + 类型化 API
-  src/stores/              Pinia：config（AI/外观/云端配置 + UID）、toast
-  src/lib/                 prompt-builder / worldbook-scanner / memory-engine / script-import / markdown / guide
-  src/composables/         useChatEngine（统一对话引擎）
-  src/views/               首页 / 编辑器 / 游玩 / 对话 / 设置 / 公共剧本库 / 存储自测
-cloud/                     云端公共剧本库（独立 Go 程序）
+client/                    C 端（自包含模块）
+  server/                  Go 后端主服务
+    main.go                入口（-port 默认 8080，-data 默认 ./data）
+    internal/store/        SQLite：schema.sql / models.go / store.go（全部 CRUD）
+    internal/ai/           AI 代理：OpenAI 兼容上游转发 + SSE 中继
+    internal/api/          REST 端点：scripts/saves/settings/assets/backup/ai/share/static
+    internal/webui/        go:embed 内嵌前端 dist + SPA fallback
+    data/                  SQLite 库 inktavern.db（运行时生成，不入库）
+  web/                     Vue 3 前端
+    src/api/               fetch 封装 + SSE 流式 + 类型化 API
+    src/stores/            Pinia：config（AI/外观/云端配置 + UID）、toast
+    src/lib/               prompt-builder / worldbook-scanner / memory-engine / script-import / markdown / guide
+    src/composables/       useChatEngine（统一对话引擎）
+    src/views/             首页 / 编辑器 / 游玩 / 对话 / 设置 / 公共剧本库 / 存储自测
+  start-local.sh           本地一键启动脚本
+  Dockerfile               C 端镜像
+cloud/                     云端公共剧本库（独立 Go 程序，自包含）
   main.go                  JSON 文件存储 + UID 鉴权 + 限流 + 下载配额
+  Dockerfile               云库镜像
 e2e/                       Playwright 冒烟测试（7 项）
 ```
 
@@ -150,14 +154,14 @@ cloud/data/index.json          # 目录索引 PublicMeta[]（标题/简介/封�
 
 ```bash
 # 开发
-cd server && go run .                 # :8080
-cd web && npm run dev                 # :5173（/api 代理到 8080）
+cd client/server && go run .          # :8080
+cd client/web && npm run dev          # :5173（/api 代理到 8080）
 
 # 云端服务
 cd cloud && go run . -port 8787       # :8787（需先配好 UID/配额参数）
 
 # 校验
-cd web && npx vue-tsc --noEmit && npm run build
-cd server && go build -o ink-tavern.exe .
+cd client/web && npx vue-tsc --noEmit && npm run build
+cd client/server && go build -o ink-tavern.exe .
 npx playwright test                   # e2e，自动起 :8099 + data-e2e 隔离
 ```

@@ -3,13 +3,13 @@
 # ===== 依赖与构建产物 =====
 node_modules/
 **/node_modules/
-server/internal/webui/dist/
+client/server/internal/webui/dist/
 dist/
 *.tsbuildinfo
 
 # ===== 运行时数据（含用户数据/API Key，严禁入库）=====
-server/data/
-server/data-e2e/
+client/server/data/
+client/server/data-e2e/
 cloud/data/
 data/
 *.db

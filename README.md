@@ -22,6 +22,7 @@
 ### 方式零：本地独立部署（推荐日常使用，不依赖 Docker / 云端）
 
 ```bash
+cd client
 ./start-local.sh              # 一键：构建并启动主服务 + 本地公共库
 ./start-local.sh --main-only  # 仅启动主服务（不跑公共库）
 ```
@@ -46,18 +47,18 @@ docker compose up -d --build
 
 ```bash
 # 后端（端口 8080）
-cd server && go run .
+cd client/server && go run .
 
 # 前端开发（端口 5173，/api 代理到 8080）—— 生产则直接访问 8080
-cd web && npm install && npm run dev
+cd client/web && npm install && npm run dev
 ```
 
 生产单文件构建：
 
 ```bash
-cd web && npm run build          # 构建前端到 server/internal/webui/dist
+cd client/web && npm run build         # 构建前端到 server/internal/webui/dist
 cd ../server && go build -o ink-tavern.exe .
-./ink-tavern.exe                 # 浏览器打开 http://localhost:8080
+./ink-tavern.exe                       # 浏览器打开 http://localhost:8080
 ```
 
 ### ⚙️ 首次配置
@@ -87,10 +88,16 @@ cd ../server && go build -o ink-tavern.exe .
 ## 📁 目录结构
 
 ```
-server/      Go 后端（单文件可执行，内嵌前端）
-web/         Vue 3 前端
-cloud/       云端公共剧本库（独立 Go 服务）
-e2e/         Playwright 冒烟测试
+client/                 C 端（自包含模块）
+  server/               Go 后端（单文件可执行，内嵌前端）
+  web/                  Vue 3 前端
+  start-local.sh        本地一键启动脚本
+  Dockerfile            C 端镜像
+cloud/                  云端公共剧本库（独立 Go 服务，自包含）
+  main.go               服务主程序
+  Dockerfile            云库镜像
+e2e/                    Playwright 冒烟测试
+docker-compose.yml      两套系统编排（容器部署）
 ```
 
 ## 📖 更多文档

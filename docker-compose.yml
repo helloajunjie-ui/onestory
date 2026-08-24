@@ -13,9 +13,10 @@
 
 services:
   ink-tavern:
+    # C 端自包含模块（client/）：server 后端 + web 前端，多阶段构建内嵌
     build:
-      context: .
-      dockerfile: Dockerfile.ink-tavern
+      context: ./client
+      dockerfile: Dockerfile
     container_name: ink-tavern
     ports:
       - "23456:8080"
@@ -25,9 +26,10 @@ services:
     restart: unless-stopped
 
   cloud:
+    # 云库独立模块（cloud/），纯 Go 标准库
     build:
-      context: .
-      dockerfile: Dockerfile.cloud
+      context: ./cloud
+      dockerfile: Dockerfile
     container_name: ink-tavern-cloud
     ports:
       - "23457:8787"

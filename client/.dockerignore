@@ -1,0 +1,9 @@
+# C 端模块构建上下文排除
+node_modules/
+**/node_modules/
+server/internal/webui/dist/
+server/data/
+server/data-e2e/
+data/
+*.exe
+*.exe~

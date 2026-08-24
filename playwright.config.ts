@@ -16,7 +16,7 @@ export default defineConfig({
   // e2e 使用独立的测试服务（端口 8099 + 独立数据目录 data-e2e），
   // 避免污染开发数据（如设置页保存的 AI 配置）
   webServer: {
-    command: 'cd server && go run . -port 8099 -data ./data-e2e',
+    command: 'cd client/server && go run . -port 8099 -data ./data-e2e',
     url: 'http://localhost:8099/api/health',
     reuseExistingServer: false,
     timeout: 30_000,

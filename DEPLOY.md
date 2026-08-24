@@ -4,8 +4,8 @@
 
 | 服务 | 镜像来源 | 宿主机端口 | 数据卷 |
 |---|---|---|---|
-| **ink-tavern**（主服务：剧本/存档/对话/设置） | `Dockerfile.ink-tavern`（多阶段，内嵌前端） | **23456**（容器内 8080） | `./data/server` |
-| **cloud**（云端公共剧本库） | `Dockerfile.cloud`（纯 Go 标准库） | **23457**（容器内 8787） | `./data/cloud` |
+| **ink-tavern**（C 端主服务：剧本/存档/对话/设置） | `client/Dockerfile`（多阶段，内嵌前端） | **23456**（容器内 8080） | `./data/server` |
+| **cloud**（云端公共剧本库） | `cloud/Dockerfile`（纯 Go 标准库） | **23457**（容器内 8787） | `./data/cloud` |
 
 > 使用冷门端口避免与常见服务（8080 等）冲突；若仍被占用，改 `docker-compose.yml` 的 `ports` 左侧宿主机端口即可（右侧容器内端口固定）。
 
@@ -37,13 +37,13 @@ docker compose up -d --build
 ```
 
 ### 迁移已有数据（可选）
-本地已有数据在 `server/data/` 与 `cloud/data/`。首次启动前把旧数据复制进宿主机卷目录：
+本地已有数据在 `client/server/data/` 与 `cloud/data/`。首次启动前把旧数据复制进宿主机卷目录：
 
 ```bash
 # 停掉容器后
-cp -r server/data/. data/server/   # 保留本地剧本/存档/配置
-cp -r cloud/data/. data/cloud/     # 保留云端公共库
-docker compose up -d               # 重新启动
+cp -r client/server/data/. data/server/   # 保留本地剧本/存档/配置
+cp -r cloud/data/. data/cloud/            # 保留云端公共库
+docker compose up -d                      # 重新启动
 ```
 
 ## 四、常见问题
