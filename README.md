@@ -97,6 +97,7 @@ e2e/         Playwright 冒烟测试
 
 - [ARCHITECTURE.md](ARCHITECTURE.md) — 技术架构（面向开发/运维）
 - [DEPLOY.md](DEPLOY.md) — Docker 容器部署与数据迁移
+- [CLOUD-API.md](CLOUD-API.md) — C 端与云库对接接口契约 v1（固定）
 
 ## 许可
 
