@@ -146,9 +146,9 @@ cloud/data/index.json          # 目录索引 PublicMeta[]（标题/简介/封�
 
 见 [DEPLOY.md](DEPLOY.md)。要点：
 
-- 两套服务各自 `Dockerfile`（多阶段：node 构建前端 → golang 编译 → alpine 运行），`docker compose up -d --build` 一键起。
-- 数据 bind mount：`./data/server`（主服务 SQLite）、`./data/cloud`（云端剧本库）。
-- 主服务为单文件可执行（`go:embed` 内嵌前端），也可不依赖 Docker 直接运行。
+- **C 端与云库各自独立编排**：`client/docker-compose.yml`、`cloud/docker-compose.yml`，分别 `cd client/cloud && docker compose up -d --build` 部署，互不依赖。
+- 数据 bind mount：`client/data`（C 端 SQLite）、`cloud/data`（云端剧本库）。
+- C 端为单文件可执行（`go:embed` 内嵌前端），也可不依赖 Docker 直接运行（`./start-local.sh`）。
 
 ## 11. 开发与测试
 

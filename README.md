@@ -32,16 +32,19 @@ cd client
 
 本地与云端完全独立：本地不依赖 Docker、不依赖云端修复进度。云端部署是另一套（见 DEPLOY.md），两者互不影响。
 
-### 方式一：Docker（云端/服务器部署，两套系统一键起）
+### 方式一：Docker（各自独立编排，C 端与云库分别部署）
 
 ```bash
-docker compose up -d --build
+# C 端（墨染酒馆）
+cd client && docker compose up -d --build
+# → http://localhost:23456
 
-# 墨染酒馆    → http://localhost:23456
-# 云端公共库 → http://localhost:23457
+# 云库（云端公共剧本库）
+cd cloud && docker compose up -d --build
+# → http://localhost:23457
 ```
 
-进入 **设置 → 公共剧本库**，云端地址填 `http://localhost:23457`，即可使用共享剧本库。数据持久化在 `./data/`，详见 [DEPLOY.md](DEPLOY.md)。端口在 `docker-compose.yml` 里可改。
+进入 **设置 → 公共剧本库**，云端地址填 `http://localhost:23457`，即可使用共享剧本库。各模块数据持久化在本目录 `./data/`，详见 [DEPLOY.md](DEPLOY.md)。端口在各模块 `docker-compose.yml` 里可改。
 
 ### 方式二：本地运行
 
@@ -88,16 +91,15 @@ cd ../server && go build -o ink-tavern.exe .
 ## 📁 目录结构
 
 ```
-client/                 C 端（自包含模块）
+client/                 C 端（自包含模块，可独立部署）
   server/               Go 后端（单文件可执行，内嵌前端）
   web/                  Vue 3 前端
   start-local.sh        本地一键启动脚本
-  Dockerfile            C 端镜像
-cloud/                  云端公共剧本库（独立 Go 服务，自包含）
+  Dockerfile / docker-compose.yml   C 端镜像与编排
+cloud/                  云端公共剧本库（独立服务，可独立部署）
   main.go               服务主程序
-  Dockerfile            云库镜像
+  Dockerfile / docker-compose.yml   云库镜像与编排
 e2e/                    Playwright 冒烟测试
-docker-compose.yml      两套系统编排（容器部署）
 ```
 
 ## 📖 更多文档

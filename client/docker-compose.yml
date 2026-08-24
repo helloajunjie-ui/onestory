@@ -1,0 +1,19 @@
+# C 端（墨染酒馆）独立编排部署
+# 用法：
+#   cd client && docker compose up -d --build
+#   docker compose ps / logs -f ink-tavern / down
+#
+# 端口：宿主机 23456（容器内 8080），若被占用改左侧即可。
+# 数据：bind mount 到本目录 ./data（SQLite 库），down 不丢。
+
+services:
+  ink-tavern:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ink-tavern
+    ports:
+      - "23456:8080"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped

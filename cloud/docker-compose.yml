@@ -1,0 +1,20 @@
+# 云库（云端公共剧本库）独立编排部署
+# 用法：
+#   cd cloud && docker compose up -d --build
+#   docker compose ps / logs -f cloud / down
+#
+# 端口：宿主机 23457（容器内 8787），若被占用改左侧即可。
+# 数据：bind mount 到本目录 ./data（剧本库 JSON 文件），down 不丢。
+# 安全：所有 /api/scripts 需 X-UID；下载配额、单 IP 限流内置。
+
+services:
+  cloud:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ink-tavern-cloud
+    ports:
+      - "23457:8787"
+    volumes:
+      - ./data:/data
+    restart: unless-stopped
